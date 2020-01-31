@@ -76,6 +76,72 @@ describe("integration empty database", function() {
           expect(res.body.message).to.equal("book successfully added");
           done(); // <= Call done to signal callback end
         });
+        
+        it('key books should be ‘error fetching books’ ', function() {
+        
+        });
+    
+        it('response status should be 400', function() {
+        
+        });
+    });
+    
+    describe('POST result', function() {
+        
+        it('response status should be 200', function() {
+        
+        });
+        
+        it('key books should be ‘book successfully added’ ', function() {
+        
+        });
+        it('response status should be 400', function() {
+        
+        });
+        it('key books should be ‘error adding the book’  ', function() {
+        
+        });
+    });
+    
+    describe('PUT result', function() {
+        
+        it('response status should be 200', function() {
+        
+        });
+        
+        it('key books should be ‘book successfully updated’  ', function() {
+        
+        });
+        
+         it('key books should be ‘error updating the book’  ', function() {
+        
+        });
+        
+        
+        it('response status should be 400', function() {
+        
+        });
+    });
+    
+    
+    describe('DELETE result', function() {
+        
+        it('response status should be 200', function() {
+        
+        });
+        
+        it('key books should be ‘book successfully deleted’ ', function() {
+        
+        });
+        
+        it('key books should be ‘error deleting the book’  ', function() {
+        
+        });
+        
+        
+        it('response status should be 400', function() {
+        
+        });
     });
   });
 });
