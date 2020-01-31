@@ -38,4 +38,13 @@ describe('integration', function() {
         });
     });
 
+    describe('POST /book', function() {
+        it('response status should be 200', function() {
+            
+        });
+
+        it('key books should be contain "book successfully added"', function() {
+            
+        });
+    });
   });
