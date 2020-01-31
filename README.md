@@ -1,5 +1,5 @@
 # TEST DRIVEN DEVELOPMENT
-![Node.js CI](https://github.com/Clementwdk/TestUnitaireApi/workflows/Node.js%20CI/badge.svg?event=push)
+![Node.js CI](https://github.com/Clementwdk/TestUnitaireApi/workflows/Node.js%20CI/badge.svg?branch=master&event=push)
 
 Le sujet ce trouve dans le PDF ```TDD SUJET.pdf```
 
