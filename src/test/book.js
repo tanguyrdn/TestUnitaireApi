@@ -15,7 +15,7 @@ chai.use(chaiAsPromised);
 // tout les packages et fonction nescessaire au test sont importé ici, bon courage
 
 // fait les Tests d'integration en premier
-describe('integration', function() {
+describe('test unitaire', function() {
     beforeEach(function() {
         resetDatabase()
     });
@@ -24,17 +24,80 @@ describe('integration', function() {
         
     });
 
-    describe('GET /book', function() {
-        it('response should be an object', function() {
+    describe('GET result', function() {
         
-        });
-
         it('response status should be 200', function() {
             
         });
 
         it('key books should be an array and empty', function() {
             
+        });
+        
+        it('key books should be ‘error fetching books’ ', function() {
+        
+        });
+    
+        it('response status should be 400', function() {
+        
+        });
+    });
+    
+    describe('POST result', function() {
+        
+        it('response status should be 200', function() {
+        
+        });
+        
+        it('key books should be ‘book successfully added’ ', function() {
+        
+        });
+        it('response status should be 400', function() {
+        
+        });
+        it('key books should be ‘error adding the book’  ', function() {
+        
+        });
+    });
+    
+    describe('PUT result', function() {
+        
+        it('response status should be 200', function() {
+        
+        });
+        
+        it('key books should be ‘book successfully updated’  ', function() {
+        
+        });
+        
+         it('key books should be ‘error updating the book’  ', function() {
+        
+        });
+        
+        
+        it('response status should be 400', function() {
+        
+        });
+    });
+    
+    
+    describe('DELETE result', function() {
+        
+        it('response status should be 200', function() {
+        
+        });
+        
+        it('key books should be ‘book successfully deleted’ ', function() {
+        
+        });
+        
+        it('key books should be ‘error deleting the book’  ', function() {
+        
+        });
+        
+        
+        it('response status should be 400', function() {
+        
         });
     });
 
