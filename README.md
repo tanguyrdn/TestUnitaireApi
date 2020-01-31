@@ -1,6 +1,7 @@
 # TEST DRIVEN DEVELOPMENT
+![Node.js CI](https://github.com/Clementwdk/TestUnitaireApi/workflows/Node.js%20CI/badge.svg?branch=Int%C3%A9grationContinue&event=push)
 
-le sujet ce trouve dans le PDF ```TDD SUJET.pdf```
+Le sujet ce trouve dans le PDF ```TDD SUJET.pdf```
 
 ## Installer les dépendances
 ----------------------
@@ -37,3 +38,4 @@ Voici la documentation des outils dont vous aurez besoin pour ce projet.
 [chai-nock](https://www.chaijs.com/plugins/chai-nock/)
 
 [nock](https://github.com/nock/nock)
+
