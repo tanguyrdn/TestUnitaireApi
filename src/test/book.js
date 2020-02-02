@@ -14,7 +14,6 @@ chai.use(chaiAsPromised);
 
 // tout les packages et fonction nescessaire au test sont importé ici, bon courage
 
-const requestNock = nock('http://localhost:8080/');
 // fait les Tests d'integration en premier
 describe("integration empty database", function() {
   beforeEach(function() {
@@ -353,7 +352,7 @@ describe('test unitaire', function () {
         });
   
       describe("PUT success", function() {
-        it("response message should be book successfully updated", function(done) {
+        it("response message should be 'book successfully updated'", function(done) {
           const requestNock = nock('http://localhost:8080')
             .put('/book', { title: "Coco raconte Channel 2", years: 1990, pages: 400 })
             .reply(200, {message:'book successfully updated'});
@@ -395,7 +394,7 @@ describe('test unitaire', function () {
 
   describe("second part : unsuccessful responses", function() {
     describe("GET fail", function() {
-      it("message should be 'error fetching books", function(done) {
+      it("message should be 'error fetching books'", function(done) {
         const requestNock = nock('http://localhost:8080')
           .get('/book')
           .reply(400, 
