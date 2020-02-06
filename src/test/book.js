@@ -211,7 +211,7 @@ describe("integration mock database", () => {
           expect(res.body.message).to.equal("book successfully deleted");
           done(); // <= Call done to signal callback end
         });
-    })
+    });
   });
 
   describe("GET /book/:id", function() {
@@ -304,6 +304,168 @@ describe("integration mock database", () => {
           expect(res.body.book.pages).to.be.equal(400);
           done(); // <= Call done to signal callback end
         });
+    });
+  });
+});
+
+describe('test unitaire', function () {
+  beforeEach(function() {
+      nock.cleanAll();
+  });
+  
+  describe("first part : successful responses", function() {
+    describe("GET success", function() {
+      it("books should be an array", function(done) {
+        const requestNock = nock('http://localhost:8080')
+          .get('/book')
+          .reply(200, 
+            { 'books': []
+            });
+        chai
+          .request('http://localhost:8080')
+          .get('/book')
+          .end(function(err, res) {
+            expect(res).to.have.status(200);
+            expect(res.body.books).to.be.an('Array');
+            done(); // <= Call done to signal callback end
+          });
+        });
+      });
+
+    describe("POST success", function() {
+      it("message should be 'book successfully added'", function(done) {
+        const requestNock = nock('http://localhost:8080')
+          .post('/book')
+          .reply(200, {message:'book successfully added'});
+
+        chai
+          .request('http://localhost:8080')
+          .post('/book')
+          .send({ title: "Coco raconte Channel 2", years: 1990, pages: 400 })
+          .end(function(err, res) {
+            expect(res).to.have.status(200);
+            expect(res.body.message).to.equal("book successfully added");
+            done(); // <= Call done to signal callback end
+          });
+        });
+      });
+
+    describe("PUT success", function() {
+      it("response message should be 'book successfully updated'", function(done) {
+        const requestNock = nock('http://localhost:8080')
+          .put('/book/01')
+          .reply(200, {message:'book successfully updated'});
+
+        chai
+          .request('http://localhost:8080')
+          .put('/book/01')
+          .send({
+            title: "Coco raconte Channel 2",
+            years: 1990,
+            pages: 400
+          })
+          .end(function(err, res) {
+            expect(res).to.have.status(200);
+            expect(res.body.message).to.equal("book successfully updated");
+            done(); // <= Call done to signal callback end
+          });
+        });
+      });
+
+        
+
+  describe("DELETE success", function() {
+    it("response message should be 'book successfully deleted'", done => {
+      const requestNock = nock('http://localhost:8080')
+          .delete('/book/01')
+          .reply(200, {message:'book successfully deleted'});
+      chai
+        .request('http://localhost:8080')
+        .delete('/book/01')
+        .end(function(err, res) {
+          expect(res).to.have.status(200);
+          expect(res.body.message).to.equal("book successfully deleted");
+          done(); // <= Call done to signal callback end
+        });
+    });
+  });
+});
+
+describe("second part : unsuccessful responses", function() {
+  describe("GET fail", function() {
+    it("message should be 'error fetching books'", function(done) {
+      const requestNock = nock('http://localhost:8080')
+        .get('/book')
+        .reply(400, 
+          { message: 'error fetching books'
+          });
+      chai
+        .request('http://localhost:8080')
+        .get('/book')
+        .end(function(err, res) {
+          expect(res).to.have.status(400);
+          expect(res.body.message).to.equal("error fetching books");
+          done(); // <= Call done to signal callback end
+        });
+      });
+    });
+
+  describe("POST fail", function() {
+    it("message should be 'error adding the book'", function(done) {
+      const requestNock = nock('http://localhost:8080')
+        .post('/book')
+        .reply(400, {message:'error adding the book'});
+
+      chai
+        .request('http://localhost:8080')
+        .post('/book')
+        .send({ title: "Coco raconte Channel 2", years: 1990, pages: 400 })
+        .end(function(err, res) {
+          expect(res).to.have.status(400);
+          expect(res.body.message).to.equal("error adding the book");
+          done(); // <= Call done to signal callback end
+        });
+      });
+
+  });
+
+  describe("PUT fail", function() {
+    it("response message should be 'error updating the book", function(done) {
+      const requestNock = nock('http://localhost:8080')
+        .put('/book/01')
+        .reply(400, {message:'error updating the book'});
+
+      chai
+        .request('http://localhost:8080')
+        .put('/book/01')
+        .send({
+          title: "Coco raconte Channel 2",
+          years: 1990,
+          pages: 400
+        })
+        .end(function(err, res) {
+          expect(res).to.have.status(400);
+          expect(res.body.message).to.equal("error updating the book");
+          done(); // <= Call done to signal callback end
+        });
+      });
+
+  });
+
+  describe("DELETE fail", function() {
+    it("response message should be 'error deleting the book'", done => {
+      const requestNock = nock('http://localhost:8080')
+          .delete('/book/01')
+          .reply(400, {message:'error deleting the book'});
+      chai
+        .request('http://localhost:8080')
+        .delete('/book/01')
+        .end(function(err, res) {
+          expect(res).to.have.status(400);
+          expect(res.body.message).to.equal("error deleting the book");
+          done(); // <= Call done to signal callback end
+        });
+      });
     });
   });
 });
